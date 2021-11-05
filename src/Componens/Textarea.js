@@ -157,7 +157,10 @@ export default function Textarea(props) {
       <div className="container mt-3">
         <h2>Your Text Summary</h2>
         <p>
-          {text.length > 0 ? text.split(" ").length : "0"} Words , {text.length}{" "}
+          {text.split(/\s+/)
+            .filter((e) => {
+            return e.length !== 0
+          }).length} Words , {text.length}{" "}
           Characters
         </p>
         <p>{0.008 * text.split(" ").length} minute to read</p>
